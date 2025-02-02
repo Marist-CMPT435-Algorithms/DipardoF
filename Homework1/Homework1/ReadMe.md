@@ -38,20 +38,42 @@ The samllest value of n = 14.
 
 # Chapter 2
 ### 1. The searching problem may be specified as Input: A sequence of n numbers A = ⟨a1, a2, …, an⟩ and a value v. Output: An integer i such that v = ai or the special value NIL if v does not appear in A. Write pseudo-code, in the style of our textbook, for a linear search that scans through the input sequence, looking for v. Also, describe the loop invariant for this algorithm. Annotate your pseudo-code with costs and times for each statement/instruction, as demonstrated in class and our textbook for INSERTION-SORT.
-**Answer: **  
+**Answer:**  
 Linear search:  
 
 ``` for i = 1 to a.length{  //Cost: c1, Runs n times (worst case)
 		if a[i] == v{	    //Cost: c2, Runs n times (worst case)
 			return i;	    //Cost: c3, Runs once (best case)
-		return NIL;		    //Cost: c4, Runs once (if v not found)
+		
 	}
 }
-```
-Loop Invariant:  
-Initialization: Before the loop starts, no elements have bene searched, so the invarient holds.   
+return NIL;		           //Cost: c4, Runs once (if v not found)
+						   //Total cost: (c1 + c2)n + (c3 + c4)
+```  
+*Loop Invariant:*   
+Initialization: Before the loop starts, no elements have been searched, so the invarient holds.   
 Maintenance: As iterations continue, it will check one more element and keep going until it reaches the value v and return it.    
 Termination:There are two results, One where the v value is found the loop terminates, or one where the value v is not found in the array and returns NIL.    
 
 
-### 2. Next, consider the minimum element problem in which we want to find the least number within a sequence. Specify this problem in the style demonstrated in the textbook and used again in the previous exercise about the searching problem. Write pseudo-code, in the style of our textbook, for a linear search that scans through the input sequence, looking for v. Also, describe the loop invariant for this algorithm. Annotate your pseudo-code with costs and times for each statement/instruction, as demonstrated in class and our textbook for INSERTION-SORT.
+### 2. Next, consider the minimum element problem in which we want to find the least number within a sequence. Specify this problem in the style demonstrated in the textbook and used again in the previous exercise about the searching problem. Write pseudo-code, in the style of our textbook, for a linear search that scans through the input sequence, looking for v. Also, describe the loop invariant for this algorithm. Annotate your pseudo-code with costs and times for each statement/instruction, as demonstrated in class and our textbook for INSERTION-SORT.   
+
+**Answer:**  
+
+Linear Search (minimum element): The problem being solved here is finding the smallest value within an index in the array and returning the smallest value.
+
+~~~
+min_value = a[1]{			//cost: c1, Runs once  
+for i = 2 to a.length{	    //Cost: c2, Runs n-1 times  
+    if a[i] < min_value     //Cost: c3, Runs n-1 times (worst case)  
+        min_value = a[i]    //Cost: c4, runs n-1 times  
+    }  
+}  
+
+return min_value		    //Cost: c5, Runs once  
+
+~~~    
+*Loop Invariant:*   
+Initialization: Before the loop starts, we initialize the first index
+Maintenance: As we iterate through the loop, it will check one more element and coninue checking all elements until it finds the smallest value within the array.   
+Termination: After iterating through all elements in the array and checking each one, min_value holds the smallest value among them. The algorithm then returns min_value as the final output.
