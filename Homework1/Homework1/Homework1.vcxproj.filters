@@ -20,4 +20,9 @@
   <ItemGroup>
     <Text Include="input-numbers.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GettingInput.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
 </Project>
