@@ -41,15 +41,16 @@ The samllest value of n = 14.
 **Answer:**  
 Linear search:  
 
-``` for i = 1 to a.length{  //Cost: c1, Runs n times (worst case)
-		if a[i] == v{	    //Cost: c2, Runs n times (worst case)
-			return i;	    //Cost: c3, Runs once (best case)
+~~~
+ for i = 1 to a.length{  //Cost: c1, Runs n times (worst case)
+	if a[i] == v{	    //Cost: c2, Runs n times (worst case)
+		return i;	    //Cost: c3, Runs once (best case)
 		
 	}
 }
 return NIL;		           //Cost: c4, Runs once (if v not found)
-						   //Total cost: (c1 + c2)n + (c3 + c4)
-```  
+//Total cost: (c1 + c2)n + (c3 + c4)
+~~~  
 *Loop Invariant:*   
 Initialization: Before the loop starts, no elements have been searched, so the invarient holds.   
 Maintenance: As iterations continue, it will check one more element and keep going until it reaches the value v and return it.    
