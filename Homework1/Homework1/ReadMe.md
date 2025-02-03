@@ -1,7 +1,7 @@
 ﻿
 # Chapter 1:
 ### 1. Describe a real-world problem in which only the best solution will do. Then describe one in which a solution that is “approximately” the best is good enough.
-**Answer:** A real-world problem where the best solution wil do is taking into account an airlines schdule. We have to account for where the airline is going and how many passngers are on board. Understanding when each flight has to leave is very important for airports to keep in mind. If not then schduling would be a mess and many planes would have diffuculty taking off if there are other planes coming in at the same time of them leaving 
+**Answer:** A real-world problem where the best solution will do is taking into account an airlines schedule. We have to account for where the airline is going and how many passngers are on board. Understanding when each flight has to leave is very important for airports to keep in mind. If not then schduling would be a mess and many planes would have diffuculty taking off if there are other planes coming in at the same time of them leaving 
 A scenario for "good enough" would be someones gps rerouting them to find the next best route to their destination if there is traffic and any other delays, or even avoiding tolls.
 
 
