@@ -42,7 +42,7 @@ The samllest value of n = 14.
 Linear search:  
 
 ~~~
- for i = 1 to a.length{  //Cost: c1, Runs n+1 times, minimum of 1 (worst case)
+ for i = 1 to a.length{  //Cost: c1, Runs n times, minimum of 1 (worst case)
 	if a[i] == v{	    //Cost: c2, Runs n times, minimum of 1 (worst case)
 		return i;	    //Cost: c3, Runs once or 0 times (best case)
 		
@@ -51,10 +51,11 @@ Linear search:
 return NIL;		           //Cost: c4, Runs once or 0 times (if v not found)
 
 //Best case is when the target value v is the first element of array
-//   T(n) = c1*1 + c2*1 + c3 = c1 + c2 + c3 = C
+//   T(n) = c1*1 + c2*1 + c3 + c4 = c1 + c2 + c3 + c4 = c = O(1)
 //Average case is when the target value v is in the middle
-//   T(n) = c1 * (n/2) + c2 * (n/2) + c3 = ((c1 + c2 ) + c3)
+//   T(n) = c1 * (n/2) + c2 * (n/2) + c3 = ((c1n/2 + c2n/2) + c3 + c4) = c(n/2) = O(n)
 //Worst case is when the target value v is not in array
+//   T(n) = c1 * (n) + c2 * (n) + c3 + c4 =  ((c1n + c2n) + c3 + c4) = c(n) = O(n)
 ~~~  
 *Loop Invariant:*   
 Initialization: Before the loop starts, no elements have been searched, so the invarient holds.   
@@ -70,14 +71,19 @@ Linear Search (minimum element): The problem being solved here is finding the sm
 
 ~~~
 min_value = a[1]{			//cost: c1, Runs once  
-for i = 2 to a.length{	    //Cost: c2, Runs n-1 times  
+for i = 1 to a.length{	    //Cost: c2, Runs n-1 times  
     if a[i] < min_value     //Cost: c3, Runs n-1 times (worst case)  
         min_value = a[i]    //Cost: c4, runs n-1 times  
     }  
 }  
 
 return min_value		    //Cost: c5, Runs once  
-
+//Best case is when the target value v is the first element of array
+//   T(n) = c1*1 + c2*(n-1) + c3*(n-1) + c4*1 + c5*1 = ((c2 + c3)*n-1) +c1 + c4 + c5 = cn-1 = O(n)
+//Average case is when the target value v is in the middle
+//   T(n) = c1 + c2 * (n-2) + c3 * (n-2) + c4 * (n-1/2) + c5 = ((c2 + c3 + )*n-1) + (c4n-1/2) + c1 + c5) = c(n-1) = O(n)
+//Worst case is when the target value v is not in array
+//   T(n) = c1 * 1 + c2 * (n-1) + c3 * (n-1) + c4 * (n-1) + c5 = ((c2 + c3 + c4) * n - 1) + c1 + c5 = c(n-1) = O(n)
 ~~~    
 *Loop Invariant:*   
 Initialization: Before the loop starts, we initialize the first index
