@@ -1,8 +1,8 @@
 ﻿
 # Chapter 1:
 ### 1. Describe a real-world problem in which only the best solution will do. Then describe one in which a solution that is “approximately” the best is good enough.
-**Answer:** A real-world problem where the best solution will do is taking into account an airlines schedule. We have to account for where the airline is going and how many passngers are on board. Understanding when each flight has to leave is very important for airports to keep in mind. If not then schduling would be a mess and many planes would have diffuculty taking off if there are other planes coming in at the same time of them leaving 
-A scenario for "good enough" would be someones gps rerouting them to find the next best route to their destination if there is traffic and any other delays, or even avoiding tolls.
+**Answer:** A real-world problem where the best solution will be is to take into account an airline's schedule. We have to account for where the airline is going and how many passengers are on board. Understanding when each flight has to leave is very important for airports to keep in mind. If not then scheduling would be a mess and many planes would have difficulty taking off if there are other planes coming in at the same time as they leave   
+A scenario for "good enough" would involve someone's GPSs rerouting them to find the next best route to their destination if there is traffic or other delays, or even avoiding tolls.
 
 
 ### 2. Suppose we are comparing implementations of insertion sort and merge sort on the same machine. For inputs of size n, insertion sort runs in 8n2 steps, while merge sort runs in 64n lg n steps. For which values of n does insertion sort beat merge sort?
@@ -58,12 +58,12 @@ return NIL;		           //Cost: c4, Runs once or 0 times (if v not found)
 //   T(n) = c1 * (n) + c2 * (n) + c3 + c4 =  ((c1n + c2n) + c3 + c4) = c(n) = O(n)
 ~~~  
 *Loop Invariant:*   
-Initialization: Before the loop starts, no elements have been searched, so the invarient holds.   
-Maintenance: As iterations continue, it will check one more element and keep going until it reaches the value v and return it.    
-Termination:There are two results, One where the v value is found the loop terminates, or one where the value v is not found in the array and returns NIL.    
+Initialization: Before the loop starts, no elements have been searched, so the invariant holds.   
+Maintenance: As iterations continue, it will check one more element and keep going until it reaches the value v and returns it.    
+Termination: There are two results, One where the v value is found the loop terminates, or one where the value v is not found in the array and returns NIL.    
 
 
-### 2. Next, consider the minimum element problem in which we want to find the least number within a sequence. Specify this problem in the style demonstrated in the textbook and used again in the previous exercise about the searching problem. Write pseudo-code, in the style of our textbook, for a linear search that scans through the input sequence, looking for v. Also, describe the loop invariant for this algorithm. Annotate your pseudo-code with costs and times for each statement/instruction, as demonstrated in class and our textbook for INSERTION-SORT.   
+### 2. Next, consider the minimum element problem in which we want to find the least number within a sequence. Specify this problem in the style demonstrated in the textbook and use it again in the previous exercise about the searching problem. Write pseudo-code, in the style of our textbook, for a linear search that scans through the input sequence, looking for v. Also, describe the loop invariant for this algorithm. Annotate your pseudo-code with costs and times for each statement/instruction, as demonstrated in class and our textbook for INSERTION-SORT.   
 
 **Answer:**  
 
@@ -86,6 +86,43 @@ return min_value		    //Cost: c5, Runs once
 //   T(n) = c1 * 1 + c2 * (n-1) + c3 * (n-1) + c4 * (n-1) + c5 = ((c2 + c3 + c4) * n - 1) + c1 + c5 = c(n-1) = O(n)
 ~~~    
 *Loop Invariant:*   
-Initialization: Before the loop starts, we initialize the first index
-Maintenance: As we iterate through the loop, it will check one more element and coninue checking all elements until it finds the smallest value within the array.   
-Termination: After iterating through all elements in the array and checking each one, min_value holds the smallest value among them. The algorithm then returns min_value as the final output.
+Initialization: Before the loop starts, we initialize the first index   
+Maintenance: As we iterate through the loop, it will check one more element and continue checking all elements until it finds the smallest value within the array.    
+Termination: After iterating through all elements in the array and checking each one, min_value holds the smallest value among them. The algorithm then returns min_value as the final output.   
+
+
+### Consider a method of sorting n numbers stored in array A by first finding the smallest element of A and exchanging it with the element in A[1]. Then find the second smallest element of A, and exchange it with A[2].  
+ Continue in this manner for the first n − 1 elements of A. Here is pseudocode for this procedure:  
+NEW-SORT(A)  
+for i = 1 to A.length − 1  
+    k = i  
+    for j = i to A.length  
+        if A[j] < A[k]  
+            k = j  
+    key = A[k]  
+    A[k] = A[i]  
+    A[i] = key  
+
+~~~  
+NEW-SORT(A)  
+for i = 1 to A.length − 1        // Cost: c1, Runs n-1 times  
+    k = i                         // Cost: c2, Runs n-1 times  
+    for j = i to A.length         // Cost: c3, Runs n-i+1 times per iteration of i  
+        if A[j] < A[k]            // Cost: c4, Runs n-i times in worst case  
+            k = j                 // Cost: c5, Runs at most n-i times  
+    key = A[k]                    // Cost: c6, Runs n-1 times  
+    A[k] = A[i]                   // Cost: c7, Runs n-1 times  
+    A[i] = key                    // Cost: c8, Runs n-1 times  
+
+//Best Case: T(n) = c1(n-1) + c2(n-1) + c3 (n-i+1) + c4(n-1)/2 + c5 (n-1)/2 + c6(n-1) + c7(n-1) + c8(n-1) =
+(c3 + c4/2 + c5/2 ) ((n-1)n/2) + (c1 + c2 + c6 + c7 + c8)(n-1) = O(n^2)
+
+//Average Case: T(n) = c1(n-1) + c2(n-1) + c3 (n-i+1) + c4(n-1) + c5 (n-1) + c6(n-1) + c7(n-1) + c8(n-1) =
+(c3 + c4 + c5) ((n-1)n/2) + (c1 + c2 + c6 + c7 + c8)(n-1) = O(n^2)
+
+//Worst Case: T(n) = c1(n-1) + c2(n-1) + c3 (n-i+1) + c4(n-1) + c5 (n-1) + c6(n-1) + c7(n-1) + c8(n-1) =
+(c3 + c4 + c5) ((n-1)n/2) + (c1 + c2 + c6 + c7 + c8)(n-1) = O(n^2)
+
+~~~
+
+
