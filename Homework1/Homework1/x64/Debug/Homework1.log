@@ -1,2 +1,4 @@
 ﻿  GettingInput.cpp
+C:\Users\seizo\source\repos\DipardoF\Homework1\Homework1\GettingInput.cpp(50,11): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\seizo\source\repos\DipardoF\Homework1\Homework1\GettingInput.cpp(64,11): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   Homework1.vcxproj -> C:\Users\seizo\source\repos\DipardoF\Homework1\x64\Debug\Homework1.exe

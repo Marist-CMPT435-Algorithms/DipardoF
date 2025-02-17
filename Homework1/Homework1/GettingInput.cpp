@@ -1,5 +1,5 @@
 #include <iostream>
-#include <fstream>  // For file handling
+#include <fstream>  
 #include <vector>
 using namespace std;
 
@@ -45,6 +45,34 @@ int findMinimum(const vector<int>& arr) {
     return min_value;
 }
 
+// Selection Sort in Ascending Order
+void ascendingSort(vector<int>& arr) {
+    int n = arr.size();
+    for (int i = 0; i < n - 1; i++) {
+        int k = i;
+        for (int j = i + 1; j < n; j++) {
+            if (arr[j] < arr[k]) {  // Find the smallest element
+                k = j;
+            }
+        }
+        swap(arr[i], arr[k]);  // Swap found minimum with current position
+    }
+}
+
+// Selection Sort in Descending Order
+void descendingSort(vector<int>& arr) {
+    int n = arr.size();
+    for (int i = 0; i < n - 1; i++) {
+        int k = i;
+        for (int j = i + 1; j < n; j++) {
+            if (arr[j] > arr[k]) {  // Find the largest element
+                k = j;
+            }
+        }
+        swap(arr[i], arr[k]);  // Swap found maximum with current position
+    }
+}
+
 int main() {
     string filename = "input-numbers.txt";  // Specify the file name
     vector<int> numbers = readInput(filename);  // Call function to read file
@@ -80,6 +108,22 @@ int main() {
     // Find and display the minimum value in the array
     int min_value = findMinimum(numbers);
     cout << "The minimum value in the array is: " << min_value << endl;
+
+    // Sort the array in ascending order
+    ascendingSort(numbers);
+    cout << "Sorted in Ascending Order: ";
+    for (int num : numbers) {
+        cout << num << " ";
+    }
+    cout << endl;
+
+    // Sort the array in descending order
+    descendingSort(numbers);
+    cout << "Sorted in Descending Order: ";
+    for (int num : numbers) {
+        cout << num << " ";
+    }
+    cout << endl;
 
     return 0;
 }
