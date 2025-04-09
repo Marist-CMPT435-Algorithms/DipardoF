@@ -127,6 +127,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="..\..\..\..\..\Downloads\Exercise 12.1-1.pdf" />
+    <None Include="..\..\..\..\..\Downloads\Hacker Rank Problems.pdf" />
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
